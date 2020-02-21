@@ -1,0 +1,20 @@
+# Java build artifacts class files
+*.class
+
+# generated files
+bin/
+gen/
+build/
+
+# Eclipse project files
+.classpath
+.project
+
+# IntelliJ project files
+*.iml
+.idea
+.gradle
+
+
+# NDK
+obj/
