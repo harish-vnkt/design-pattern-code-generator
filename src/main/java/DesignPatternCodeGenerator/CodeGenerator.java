@@ -11,9 +11,9 @@ import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.FileUtils;
 
 /**
- * The abstract class CodeGenerator is a type that represents
- * individual files in a particular design pattern. The files
- * that implement it have access to functions that help build
+ * The abstract class CodeGenerator represents individual
+ * files in a particular design pattern. The files that
+ * implement it have access to functions that help build
  * an AST from scratch.
  *
  * @author Harish Venkataraman
@@ -37,6 +37,19 @@ public abstract class CodeGenerator {
     // used to store the string resulting from an AST
     public Document document;
 
+    // static variables
+    public static Modifier.ModifierKeyword publicKeyword = Modifier.ModifierKeyword.PUBLIC_KEYWORD;
+    public static Modifier.ModifierKeyword privateKeyword = Modifier.ModifierKeyword.PRIVATE_KEYWORD;
+    public static Modifier.ModifierKeyword protectedKeyword = Modifier.ModifierKeyword.PROTECTED_KEYWORD;
+    public static Modifier.ModifierKeyword abstractKeyword = Modifier.ModifierKeyword.ABSTRACT_KEYWORD;
+    public static Modifier.ModifierKeyword staticKeyword = Modifier.ModifierKeyword.STATIC_KEYWORD;
+    public static PrimitiveType.Code intType = PrimitiveType.INT;
+    public static PrimitiveType.Code floatType = PrimitiveType.FLOAT;
+    public static PrimitiveType.Code doubleType = PrimitiveType.DOUBLE;
+    public static PrimitiveType.Code booleanType = PrimitiveType.BOOLEAN;
+    public static PrimitiveType.Code charType = PrimitiveType.CHAR;
+    public static PrimitiveType.Code voidType = PrimitiveType.VOID;
+
     // constructor
     protected CodeGenerator(String fileName) {
         this.source = ""; // start building from an empty string
@@ -55,6 +68,66 @@ public abstract class CodeGenerator {
         // retrieve AST from empty CU
         this.abstractSyntaxTree = this.compilationUnit.getAST();
 
+    }
+
+    protected void createTypeDeclaration(String className, Boolean isInterface,
+                                         Modifier.ModifierKeyword accessModifierKeyword,
+                                         Boolean isStatic, Boolean isAbstract,
+                                         String superClass, String superInterface) {
+
+        // create an AST node which is a type declaration
+        this.classDeclaration = this.abstractSyntaxTree.newTypeDeclaration();
+        // set name of class
+        this.classDeclaration.setName(this.abstractSyntaxTree.newSimpleName(className));
+        // set as interface if needed
+        this.classDeclaration.setInterface(isInterface);
+        // set modifiers
+        Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
+        this.classDeclaration.modifiers().add(accessModifier);
+        if (isStatic) {
+            Modifier staticModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.staticKeyword);
+            this.classDeclaration.modifiers().add(staticModifier);
+        }
+        if (isAbstract) {
+            Modifier abstractModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.abstractKeyword);
+            this.classDeclaration.modifiers().add(abstractModifier);
+        }
+        // set super class and super interface
+        this.classDeclaration.setSuperclassType(createSimpleType(superClass));
+        this.classDeclaration.superInterfaceTypes().add(createSimpleType(superInterface));
+
+    }
+
+    protected MethodDeclaration declareMethod(String methodName, Type returnType,
+                                              Modifier.ModifierKeyword accessModifierKeyword) {
+
+        // create an AST node which is a method declaration
+        MethodDeclaration methodDeclaration = this.abstractSyntaxTree.newMethodDeclaration();
+        // set name of method
+        methodDeclaration.setName(this.abstractSyntaxTree.newSimpleName(methodName));
+        // set return type of method
+        methodDeclaration.setReturnType2(returnType);
+        // set access modifier
+        Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
+        methodDeclaration.modifiers().add(accessModifier);
+
+        return methodDeclaration;
+
+    }
+
+    protected PrimitiveType createPrimitiveType(PrimitiveType.Code type) {
+        return this.abstractSyntaxTree.newPrimitiveType(type);
+    }
+
+    protected SimpleType createSimpleType(String name) {
+        return this.abstractSyntaxTree.newSimpleType(this.abstractSyntaxTree.newName(name));
+    }
+
+    protected SingleVariableDeclaration createSingleVariableDeclaration(String name, Type type) {
+        SingleVariableDeclaration singleVariableDeclaration = this.abstractSyntaxTree.newSingleVariableDeclaration();
+        singleVariableDeclaration.setName(this.abstractSyntaxTree.newSimpleName(name));
+        singleVariableDeclaration.setType(type);
+        return singleVariableDeclaration;
     }
 
 }
