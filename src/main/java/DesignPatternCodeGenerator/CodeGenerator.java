@@ -125,6 +125,16 @@ public abstract class CodeGenerator {
 
     }
 
+    protected MethodDeclaration createMainMethodDeclaration() {
+        MethodDeclaration mainMethod = this.declareMethod("main", createPrimitiveType(CodeGenerator.voidType),
+                CodeGenerator.publicKeyword, true, false);
+        SingleVariableDeclaration mainParameter = this.abstractSyntaxTree.newSingleVariableDeclaration();
+        mainParameter.setName(this.abstractSyntaxTree.newSimpleName("args"));
+        mainParameter.setType(this.createArrayType(this.createSimpleType("String")));
+        mainMethod.parameters().add(mainParameter);
+        return mainMethod;
+    }
+
     protected Block createBlock() {
         return this.abstractSyntaxTree.newBlock();
     }
