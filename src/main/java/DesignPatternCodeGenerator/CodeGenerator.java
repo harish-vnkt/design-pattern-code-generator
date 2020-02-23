@@ -176,6 +176,15 @@ public abstract class CodeGenerator {
         return methodInvocation;
     }
 
+    protected Statement createPrintStatement(Expression argument) {
+        QualifiedName qName = this.abstractSyntaxTree.newQualifiedName(
+                this.abstractSyntaxTree.newSimpleName("System"),
+                this.abstractSyntaxTree.newSimpleName("out"));
+        MethodInvocation printMethod = this.createMethodInvocation("println", qName);
+        printMethod.arguments().add(argument);
+        return this.abstractSyntaxTree.newExpressionStatement(printMethod);
+    }
+
     protected ClassInstanceCreation createInstanceCreationExpression(Type instanceType) {
         ClassInstanceCreation instanceCreation = this.abstractSyntaxTree.newClassInstanceCreation();
         instanceCreation.setType(instanceType);
