@@ -137,6 +137,10 @@ public abstract class CodeGenerator {
         return this.abstractSyntaxTree.newSimpleType(this.abstractSyntaxTree.newName(name));
     }
 
+    protected ArrayType createArrayType(Type type) {
+        return this.abstractSyntaxTree.newArrayType(type);
+    }
+
     protected SingleVariableDeclaration createSingleVariableDeclaration(String name, Type type) {
         SingleVariableDeclaration singleVariableDeclaration = this.abstractSyntaxTree.newSingleVariableDeclaration();
         singleVariableDeclaration.setName(this.abstractSyntaxTree.newSimpleName(name));
