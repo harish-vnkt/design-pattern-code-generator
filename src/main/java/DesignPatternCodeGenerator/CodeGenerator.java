@@ -1,19 +1,14 @@
 package DesignPatternCodeGenerator;
 
 import org.eclipse.jdt.core.dom.*;
-import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
-import org.eclipse.text.edits.MalformedTreeException;
-import org.eclipse.text.edits.TextEdit;
-import java.util.ArrayList;
-import java.util.List;
-import java.nio.charset.StandardCharsets;
-import org.apache.commons.io.FileUtils;
+
+import javax.annotation.Nullable;
 
 /**
  * The abstract class CodeGenerator represents individual
  * files in a particular design pattern. The files that
- * implement it have access to functions that help build
+ * extend it have access to functions that help build
  * an AST from scratch.
  *
  * @author Harish Venkataraman
@@ -71,9 +66,9 @@ public abstract class CodeGenerator {
     }
 
     protected void createTypeDeclaration(String className, Boolean isInterface,
-                                         Modifier.ModifierKeyword accessModifierKeyword,
+                                         @Nullable Modifier.ModifierKeyword accessModifierKeyword,
                                          Boolean isStatic, Boolean isAbstract,
-                                         String superClass, String superInterface) {
+                                         @Nullable String superClass, @Nullable String superInterface) {
 
         // create an AST node which is a type declaration
         this.classDeclaration = this.abstractSyntaxTree.newTypeDeclaration();
@@ -82,8 +77,10 @@ public abstract class CodeGenerator {
         // set as interface if needed
         this.classDeclaration.setInterface(isInterface);
         // set modifiers
-        Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
-        this.classDeclaration.modifiers().add(accessModifier);
+        if (accessModifierKeyword != null) {
+            Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
+            this.classDeclaration.modifiers().add(accessModifier);
+        }
         if (isStatic) {
             Modifier staticModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.staticKeyword);
             this.classDeclaration.modifiers().add(staticModifier);
@@ -93,8 +90,12 @@ public abstract class CodeGenerator {
             this.classDeclaration.modifiers().add(abstractModifier);
         }
         // set super class and super interface
-        this.classDeclaration.setSuperclassType(createSimpleType(superClass));
-        this.classDeclaration.superInterfaceTypes().add(createSimpleType(superInterface));
+        if (superClass != null) {
+            this.classDeclaration.setSuperclassType(createSimpleType(superClass));
+        }
+        if (superInterface != null) {
+            this.classDeclaration.superInterfaceTypes().add(createSimpleType(superInterface));
+        }
 
     }
 
