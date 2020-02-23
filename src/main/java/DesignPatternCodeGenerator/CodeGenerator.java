@@ -100,7 +100,8 @@ public abstract class CodeGenerator {
     }
 
     protected MethodDeclaration declareMethod(String methodName, Type returnType,
-                                              Modifier.ModifierKeyword accessModifierKeyword) {
+                                              Modifier.ModifierKeyword accessModifierKeyword,
+                                              Boolean isStatic, Boolean isAbstract) {
 
         // create an AST node which is a method declaration
         MethodDeclaration methodDeclaration = this.abstractSyntaxTree.newMethodDeclaration();
@@ -111,6 +112,14 @@ public abstract class CodeGenerator {
         // set access modifier
         Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
         methodDeclaration.modifiers().add(accessModifier);
+        if (isStatic) {
+            Modifier staticModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.staticKeyword);
+            methodDeclaration.modifiers().add(staticModifier);
+        }
+        if (isAbstract) {
+            Modifier abstractModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.abstractKeyword);
+            methodDeclaration.modifiers().add(abstractKeyword);
+        }
 
         return methodDeclaration;
 
