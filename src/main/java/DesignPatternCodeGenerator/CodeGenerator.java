@@ -115,6 +115,10 @@ public abstract class CodeGenerator {
 
     }
 
+    protected Block createBlock() {
+        return this.abstractSyntaxTree.newBlock();
+    }
+
     protected PrimitiveType createPrimitiveType(PrimitiveType.Code type) {
         return this.abstractSyntaxTree.newPrimitiveType(type);
     }
@@ -128,6 +132,49 @@ public abstract class CodeGenerator {
         singleVariableDeclaration.setName(this.abstractSyntaxTree.newSimpleName(name));
         singleVariableDeclaration.setType(type);
         return singleVariableDeclaration;
+    }
+
+    protected VariableDeclarationExpression createVariableDeclarationExpression(String variableName,
+                                                                                Type variableType) {
+        VariableDeclarationFragment variableDeclarationFragment =
+                this.abstractSyntaxTree.newVariableDeclarationFragment();
+        variableDeclarationFragment.setName(this.abstractSyntaxTree.newSimpleName(variableName));
+        VariableDeclarationExpression variableDeclarationExpression =
+                this.abstractSyntaxTree.newVariableDeclarationExpression(variableDeclarationFragment);
+        variableDeclarationExpression.setType(variableType);
+        return variableDeclarationExpression;
+    }
+
+    protected MethodInvocation createMethodInvocation(String methodName, Expression expression) {
+        MethodInvocation methodInvocation = this.abstractSyntaxTree.newMethodInvocation();
+        methodInvocation.setName(this.abstractSyntaxTree.newSimpleName(methodName));
+        methodInvocation.setExpression(expression);
+        return methodInvocation;
+    }
+
+    protected ClassInstanceCreation createInstanceCreationExpression(Type instanceType) {
+        ClassInstanceCreation instanceCreation = this.abstractSyntaxTree.newClassInstanceCreation();
+        instanceCreation.setType(instanceType);
+        return instanceCreation;
+    }
+
+    protected Assignment createAssignmentExpression(Expression LHS, Expression RHS) {
+        Assignment assignmentExpression = this.abstractSyntaxTree.newAssignment();
+        assignmentExpression.setLeftHandSide(LHS);
+        assignmentExpression.setRightHandSide(RHS);
+        return assignmentExpression;
+    }
+
+    protected ThisExpression createThisExpression(String qualifier) {
+        ThisExpression thisExpression = this.abstractSyntaxTree.newThisExpression();
+        thisExpression.setQualifier(this.abstractSyntaxTree.newName(qualifier));
+        return thisExpression;
+    }
+
+    protected ReturnStatement createReturnStatement(Expression expression) {
+        ReturnStatement returnStatement = this.abstractSyntaxTree.newReturnStatement();
+        returnStatement.setExpression(expression);
+        return returnStatement;
     }
 
 }
