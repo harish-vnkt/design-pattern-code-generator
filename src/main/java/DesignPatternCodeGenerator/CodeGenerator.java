@@ -1,7 +1,9 @@
 package DesignPatternCodeGenerator;
 
 import org.eclipse.jdt.core.dom.*;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
+import org.eclipse.text.edits.TextEdit;
 
 import javax.annotation.Nullable;
 
@@ -16,7 +18,7 @@ import javax.annotation.Nullable;
 public abstract class CodeGenerator {
 
     // each subclass needs to implement the below method to build the code
-    public abstract Document buildCode();
+    public abstract Document buildCode() throws BadLocationException;
 
     // fields
     // source string from which AST is constructed
@@ -30,7 +32,7 @@ public abstract class CodeGenerator {
     // abstract syntax tree returned from the compilation unit
     protected AST abstractSyntaxTree;
     // used to store the string resulting from an AST
-    public Document document;
+    protected Document document;
 
     // static variables
     public static Modifier.ModifierKeyword publicKeyword = Modifier.ModifierKeyword.PUBLIC_KEYWORD;
@@ -208,6 +210,11 @@ public abstract class CodeGenerator {
         ReturnStatement returnStatement = this.abstractSyntaxTree.newReturnStatement();
         returnStatement.setExpression(expression);
         return returnStatement;
+    }
+
+    protected void applyEdits() throws BadLocationException {
+        TextEdit edits = this.compilationUnit.rewrite(this.document, null);
+        edits.apply(this.document);
     }
 
 }
