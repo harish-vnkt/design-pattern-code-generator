@@ -34,7 +34,8 @@ public class Client extends CodeGenerator {
         // constructor
         MethodDeclaration constructor = this.createConstructor(this.fileName, CodeGenerator.publicKeyword);
         Block constructorBlock = this.createBlock();
-        ThisExpression factoryThis = this.createThisExpression("factory");
+        FieldAccess factoryThis = this.createFieldAccessExpression(
+                this.abstractSyntaxTree.newSimpleName("factory"));
         SimpleName factoryVariable = this.abstractSyntaxTree.newSimpleName("factory");
         Assignment constructorAssignment = this.createAssignmentExpression(factoryThis, factoryVariable);
         constructorBlock.statements().add(this.abstractSyntaxTree.newExpressionStatement(constructorAssignment));
