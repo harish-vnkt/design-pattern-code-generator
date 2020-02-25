@@ -25,6 +25,8 @@ dependencies {
     implementation 'com.google.guava:guava:28.1-jre'
     implementation group: 'org.eclipse.jdt', name: 'org.eclipse.jdt.core', version: '3.20.0'
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    // https://mvnrepository.com/artifact/com.typesafe/config
+    implementation group: 'com.typesafe', name: 'config', version: '1.4.0'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
