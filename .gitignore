@@ -5,6 +5,7 @@
 bin/
 gen/
 build/
+generated_patterns/
 
 # Eclipse project files
 .classpath
