@@ -4,7 +4,6 @@ import DesignPatternCodeGenerator.CodeGenerator;
 import org.eclipse.jdt.core.dom.*;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
-import org.eclipse.text.edits.TextEdit;
 
 
 public class Entry extends CodeGenerator {
