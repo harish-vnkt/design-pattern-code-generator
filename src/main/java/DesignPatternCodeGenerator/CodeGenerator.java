@@ -24,7 +24,7 @@ public abstract class CodeGenerator {
     // source string from which AST is constructed
     protected String source;
     // name of the file to write to
-    protected String fileName;
+    public String fileName;
     // represents the root node of an AST (a java file)
     protected CompilationUnit compilationUnit;
     // represents the top level class declaration in this file
