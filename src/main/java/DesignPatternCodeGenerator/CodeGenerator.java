@@ -171,6 +171,15 @@ public abstract class CodeGenerator {
         return variableDeclarationExpression;
     }
 
+    protected FieldDeclaration createFieldDeclaration(String variableName, Type variableType) {
+        VariableDeclarationFragment variableDeclarationFragment =
+                this.abstractSyntaxTree.newVariableDeclarationFragment();
+        variableDeclarationFragment.setName(this.abstractSyntaxTree.newSimpleName(variableName));
+        FieldDeclaration fieldDeclaration = this.abstractSyntaxTree.newFieldDeclaration(variableDeclarationFragment);
+        fieldDeclaration.setType(variableType);
+        return fieldDeclaration;
+    }
+
     protected MethodInvocation createMethodInvocation(String methodName, Expression expression) {
         MethodInvocation methodInvocation = this.abstractSyntaxTree.newMethodInvocation();
         methodInvocation.setName(this.abstractSyntaxTree.newSimpleName(methodName));
