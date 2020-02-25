@@ -23,7 +23,7 @@ public class DesignPatternFactory {
                     this.configObject.getString("AbstractFactory.entryClass"),
                     this.configObject.getString("AbstractFactory.clientClass"),
                     this.configObject.getString("AbstractFactory.factoryClass"),
-                    this.configObject.getString("AbstractFactory.factoryInterfaceClass"),
+                    this.configObject.getString("AbstractFactory.factoryInterface"),
                     this.configObject.getString("AbstractFactory.productAClass"),
                     this.configObject.getString("AbstractFactory.productBClass")
             );
