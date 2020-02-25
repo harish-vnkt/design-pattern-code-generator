@@ -226,10 +226,10 @@ public abstract class CodeGenerator {
         return assignmentExpression;
     }
 
-    protected ThisExpression createThisExpression(String qualifier) {
-        ThisExpression thisExpression = this.abstractSyntaxTree.newThisExpression();
-        thisExpression.setQualifier(this.abstractSyntaxTree.newName(qualifier));
-        return thisExpression;
+    protected FieldAccess createFieldAccessExpression(SimpleName simpleName) {
+        FieldAccess fieldAccess = this.abstractSyntaxTree.newFieldAccess();
+        fieldAccess.setName(simpleName);
+        return fieldAccess;
     }
 
     protected ReturnStatement createReturnStatement(Expression expression) {
