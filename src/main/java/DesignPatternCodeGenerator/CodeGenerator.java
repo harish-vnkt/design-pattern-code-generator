@@ -127,6 +127,15 @@ public abstract class CodeGenerator {
 
     }
 
+    protected MethodDeclaration createConstructor(String methodName,
+                                                  Modifier.ModifierKeyword accessModifierKeyword) {
+        MethodDeclaration constructorDeclaration = this.abstractSyntaxTree.newMethodDeclaration();
+        constructorDeclaration.setName(this.abstractSyntaxTree.newSimpleName(methodName));
+        Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
+        constructorDeclaration.modifiers().add(accessModifier);
+        return constructorDeclaration;
+    }
+
     protected MethodDeclaration createMainMethodDeclaration() {
         MethodDeclaration mainMethod = this.declareMethod("main", createPrimitiveType(CodeGenerator.voidType),
                 CodeGenerator.publicKeyword, true, false);
@@ -171,12 +180,20 @@ public abstract class CodeGenerator {
         return variableDeclarationExpression;
     }
 
-    protected FieldDeclaration createFieldDeclaration(String variableName, Type variableType) {
+    protected FieldDeclaration createFieldDeclaration(String variableName, Type variableType,
+                                                      Modifier.ModifierKeyword accessModifierKeyword,
+                                                      Boolean isStatic) {
         VariableDeclarationFragment variableDeclarationFragment =
                 this.abstractSyntaxTree.newVariableDeclarationFragment();
         variableDeclarationFragment.setName(this.abstractSyntaxTree.newSimpleName(variableName));
         FieldDeclaration fieldDeclaration = this.abstractSyntaxTree.newFieldDeclaration(variableDeclarationFragment);
         fieldDeclaration.setType(variableType);
+        Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
+        fieldDeclaration.modifiers().add(accessModifier);
+        if (isStatic) {
+            Modifier staticModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.staticKeyword);
+            fieldDeclaration.modifiers().add(staticModifier);
+        }
         return fieldDeclaration;
     }
 
