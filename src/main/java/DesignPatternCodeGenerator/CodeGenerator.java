@@ -228,6 +228,8 @@ public abstract class CodeGenerator {
 
     protected FieldAccess createFieldAccessExpression(SimpleName simpleName) {
         FieldAccess fieldAccess = this.abstractSyntaxTree.newFieldAccess();
+        ThisExpression thisExpression = this.abstractSyntaxTree.newThisExpression();
+        fieldAccess.setExpression(thisExpression);
         fieldAccess.setName(simpleName);
         return fieldAccess;
     }
