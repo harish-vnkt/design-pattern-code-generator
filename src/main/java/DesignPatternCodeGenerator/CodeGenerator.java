@@ -133,6 +133,7 @@ public abstract class CodeGenerator {
         constructorDeclaration.setName(this.abstractSyntaxTree.newSimpleName(methodName));
         Modifier accessModifier = this.abstractSyntaxTree.newModifier(accessModifierKeyword);
         constructorDeclaration.modifiers().add(accessModifier);
+        constructorDeclaration.setConstructor(true);
         return constructorDeclaration;
     }
 
