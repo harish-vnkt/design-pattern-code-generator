@@ -241,6 +241,12 @@ public abstract class CodeGenerator {
         return returnStatement;
     }
 
+    protected void addImportDeclaration(Name name) {
+        ImportDeclaration importDeclaration = this.abstractSyntaxTree.newImportDeclaration();
+        importDeclaration.setName(name);
+        this.compilationUnit.imports().add(importDeclaration);
+    }
+
     protected void applyEdits() throws BadLocationException {
         TextEdit edits = this.compilationUnit.rewrite(this.document, null);
         edits.apply(this.document);
