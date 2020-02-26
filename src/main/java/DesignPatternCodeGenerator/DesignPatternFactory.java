@@ -42,6 +42,16 @@ public class DesignPatternFactory {
             );
             builderBuilder.writeFile();
         }
+
+        else if (patternNumber == 3) {
+            FactoryBuilder factoryBuilder = new FactoryBuilder(
+                    this.configObject.getString("Factory.creatorClass"),
+                    this.configObject.getString("Factory.subCreatorClass"),
+                    this.configObject.getString("Factory.productInterface"),
+                    this.configObject.getString("Factory.productAClass")
+            );
+            factoryBuilder.writeFile();
+        }
     }
 
 }
