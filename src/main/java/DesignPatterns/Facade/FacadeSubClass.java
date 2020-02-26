@@ -48,7 +48,7 @@ public class FacadeSubClass extends CodeGenerator {
         FieldAccess object3This = this.createFieldAccessExpression(
                 this.abstractSyntaxTree.newSimpleName("object3")
         );
-        Assignment object3Assignment = this.createAssignmentExpression(object1This,
+        Assignment object3Assignment = this.createAssignmentExpression(object3This,
                 this.abstractSyntaxTree.newSimpleName("object3"));
         constructorBlock.statements().add(this.abstractSyntaxTree.newExpressionStatement(object3Assignment));
         constructor.setBody(constructorBlock);
