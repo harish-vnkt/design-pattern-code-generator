@@ -249,6 +249,21 @@ public abstract class CodeGenerator {
         return returnStatement;
     }
 
+    protected SuperConstructorInvocation createSuperConstructorInvocation(@Nullable Expression expression) {
+        SuperConstructorInvocation superConstructorInvocation =
+                this.abstractSyntaxTree.newSuperConstructorInvocation();
+        if (expression != null) {
+            superConstructorInvocation.setExpression(expression);
+        }
+        return superConstructorInvocation;
+    }
+
+    protected SuperMethodInvocation createSuperMethodInvocation(SimpleName name) {
+        SuperMethodInvocation superMethodInvocation = this.abstractSyntaxTree.newSuperMethodInvocation();
+        superMethodInvocation.setName(name);
+        return superMethodInvocation;
+    }
+
     protected void addImportDeclaration(Name name) {
         ImportDeclaration importDeclaration = this.abstractSyntaxTree.newImportDeclaration();
         importDeclaration.setName(name);
