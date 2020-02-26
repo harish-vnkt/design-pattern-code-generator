@@ -33,6 +33,7 @@ public class ComplexObject extends CodeGenerator {
                 ),
                 CodeGenerator.privateKeyword,
                 false);
+        this.classDeclaration.bodyDeclarations().add(children);
 
         // constructor
         MethodDeclaration constructor = this.createConstructor(this.fileName, CodeGenerator.publicKeyword);

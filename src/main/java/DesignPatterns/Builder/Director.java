@@ -43,12 +43,12 @@ public class Director extends CodeGenerator {
         // construct method
         MethodDeclaration constructMethod = this.declareMethod("construct",
                 this.createPrimitiveType(CodeGenerator.voidType), CodeGenerator.publicKeyword,
-                null, null);
+                false, false);
         Block constructBlock = this.createBlock();
         StringLiteral printArgument = this.abstractSyntaxTree.newStringLiteral();
         printArgument.setLiteralValue("Constructing a complex object using the builder");
         Statement printStatement = this.createPrintStatement(printArgument);
-        constructBlock.statements().add(printArgument);
+        constructBlock.statements().add(printStatement);
         MethodInvocation partA = this.createMethodInvocation("buildPartA",
                 this.abstractSyntaxTree.newSimpleName("builder"));
         constructBlock.statements().add(this.abstractSyntaxTree.newExpressionStatement(partA));
