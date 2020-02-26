@@ -17,7 +17,7 @@ public class Facade extends CodeGenerator {
 
         // add method
         MethodDeclaration operationMethod = this.declareMethod("operation",
-                this.createSimpleType("String"), CodeGenerator.publicKeyword, false, true);
+                this.createPrimitiveType(CodeGenerator.voidType), CodeGenerator.publicKeyword, false, true);
 
         // add method to class
         this.classDeclaration.bodyDeclarations().add(operationMethod);
@@ -26,7 +26,7 @@ public class Facade extends CodeGenerator {
         this.compilationUnit.types().add(this.classDeclaration);
         // apply edits to the document
         this.applyEdits();
-        
+
         // return document
         return this.document;
     }
