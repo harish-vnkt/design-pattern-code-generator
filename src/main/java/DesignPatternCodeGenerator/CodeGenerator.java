@@ -243,6 +243,17 @@ public abstract class CodeGenerator {
         return fieldAccess;
     }
 
+    protected IfStatement createIfStatement(Expression expression, Statement thenStatement,
+                                            @Nullable Statement elseStatement) {
+        IfStatement ifStatement = this.abstractSyntaxTree.newIfStatement();
+        ifStatement.setExpression(expression);
+        ifStatement.setThenStatement(thenStatement);
+        if (elseStatement != null) {
+            ifStatement.setElseStatement(elseStatement);
+        }
+        return ifStatement;
+    }
+
     protected ReturnStatement createReturnStatement(Expression expression) {
         ReturnStatement returnStatement = this.abstractSyntaxTree.newReturnStatement();
         returnStatement.setExpression(expression);
