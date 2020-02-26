@@ -204,10 +204,12 @@ public abstract class CodeGenerator {
         return fieldDeclaration;
     }
 
-    protected MethodInvocation createMethodInvocation(String methodName, Expression expression) {
+    protected MethodInvocation createMethodInvocation(String methodName, @Nullable Expression expression) {
         MethodInvocation methodInvocation = this.abstractSyntaxTree.newMethodInvocation();
         methodInvocation.setName(this.abstractSyntaxTree.newSimpleName(methodName));
-        methodInvocation.setExpression(expression);
+        if (expression != null) {
+            methodInvocation.setExpression(expression);
+        }
         return methodInvocation;
     }
 
