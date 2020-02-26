@@ -120,7 +120,7 @@ public abstract class CodeGenerator {
         }
         if (isAbstract) {
             Modifier abstractModifier = this.abstractSyntaxTree.newModifier(CodeGenerator.abstractKeyword);
-            methodDeclaration.modifiers().add(abstractKeyword);
+            methodDeclaration.modifiers().add(abstractModifier);
         }
 
         return methodDeclaration;
