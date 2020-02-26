@@ -59,10 +59,10 @@ public class DesignPatternFactory {
                     this.configObject.getString("Facade.facadeClass"),
                     this.configObject.getString("Facade.facadeSubClass"),
                     this.configObject.getString("Facade.class1"),
-                    this.configObject.getString("Facade.method1"),
                     this.configObject.getString("Facade.class2"),
-                    this.configObject.getString("Facade.method2"),
                     this.configObject.getString("Facade.class3"),
+                    this.configObject.getString("Facade.method1"),
+                    this.configObject.getString("Facade.method2"),
                     this.configObject.getString("Facade.method3")
             );
             facadeBuilder.writeFile();;
