@@ -46,6 +46,18 @@ public abstract class CodeGenerator {
     public static PrimitiveType.Code booleanType = PrimitiveType.BOOLEAN;
     public static PrimitiveType.Code charType = PrimitiveType.CHAR;
     public static PrimitiveType.Code voidType = PrimitiveType.VOID;
+    public static InfixExpression.Operator multiplicationOperator = InfixExpression.Operator.TIMES;
+    public static InfixExpression.Operator additionOperator = InfixExpression.Operator.PLUS;
+    public static InfixExpression.Operator subtractionOperator = InfixExpression.Operator.MINUS;
+    public static InfixExpression.Operator divisionOperator = InfixExpression.Operator.DIVIDE;
+    public static InfixExpression.Operator greaterOperator = InfixExpression.Operator.GREATER;
+    public static InfixExpression.Operator lesserOperator = InfixExpression.Operator.LESS;
+    public static InfixExpression.Operator geqOperator = InfixExpression.Operator.GREATER_EQUALS;
+    public static InfixExpression.Operator leqOperator = InfixExpression.Operator.LESS_EQUALS;
+    public static InfixExpression.Operator equalsOperator = InfixExpression.Operator.EQUALS;
+    public static InfixExpression.Operator notEqualsOperator = InfixExpression.Operator.NOT_EQUALS;
+    public static InfixExpression.Operator andOperator = InfixExpression.Operator.CONDITIONAL_AND;
+    public static InfixExpression.Operator orOperator = InfixExpression.Operator.CONDITIONAL_OR;
 
     // constructor
     protected CodeGenerator(String fileName) {
@@ -233,6 +245,15 @@ public abstract class CodeGenerator {
         assignmentExpression.setLeftHandSide(LHS);
         assignmentExpression.setRightHandSide(RHS);
         return assignmentExpression;
+    }
+
+    protected InfixExpression createInfixExpression(Expression LHS, Expression RHS,
+                                                    InfixExpression.Operator operator) {
+        InfixExpression infixExpression = this.abstractSyntaxTree.newInfixExpression();
+        infixExpression.setLeftOperand(LHS);
+        infixExpression.setRightOperand(RHS);
+        infixExpression.setOperator(operator);
+        return infixExpression;
     }
 
     protected FieldAccess createFieldAccessExpression(SimpleName simpleName) {
