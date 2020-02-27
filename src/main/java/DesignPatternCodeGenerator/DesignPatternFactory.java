@@ -71,7 +71,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 5) {
             ChainOfResponsibilityBuilder corBuilder = new ChainOfResponsibilityBuilder(
                     this.configObject.getString("ChainOfResponsibility.senderClass"),
-                    this.configObject.getString("ChainOfResponsibility.handleClass"),
+                    this.configObject.getString("ChainOfResponsibility.handlerClass"),
                     this.configObject.getString("ChainOfResponsibility.receiver1Class"),
                     this.configObject.getString("ChainOfResponsibility.receiver2Class")
             );
