@@ -42,6 +42,9 @@ public class ConcreteColleague extends CodeGenerator {
         receiveBlock.statements().add(printStatement);
         receiveMethod.setBody(receiveBlock);
 
+        // adding method to class
+        this.classDeclaration.bodyDeclarations().add(receiveMethod);
+
         // add class to CU
         this.compilationUnit.types().add(this.classDeclaration);
         // apply edits to the document

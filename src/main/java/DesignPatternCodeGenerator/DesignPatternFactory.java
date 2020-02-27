@@ -77,6 +77,17 @@ public class DesignPatternFactory {
             );
             corBuilder.writeFile();
         }
+
+        else if (patternNumber == 6) {
+            MediatorBuilder mediatorBuilder = new MediatorBuilder(
+                    this.configObject.getString("Mediator.mediatorInterface"),
+                    this.configObject.getString("Mediator.mediatorClass"),
+                    this.configObject.getString("Mediator.colleagueAbstractClass"),
+                    this.configObject.getString("Mediator.colleague1Class"),
+                    this.configObject.getString("Mediator.colleague2Class")
+            );
+            mediatorBuilder.writeFile();
+        }
         
     }
 
