@@ -80,7 +80,7 @@ public abstract class CodeGenerator {
     }
 
     protected void createTypeDeclaration(String className, Boolean isInterface,
-                                         @Nullable Modifier.ModifierKeyword accessModifierKeyword,
+                                         Modifier.ModifierKeyword accessModifierKeyword,
                                          Boolean isStatic, Boolean isAbstract,
                                          @Nullable String superClass, @Nullable String superInterface) {
 
