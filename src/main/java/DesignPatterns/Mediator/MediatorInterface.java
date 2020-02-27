@@ -25,7 +25,7 @@ public class MediatorInterface extends CodeGenerator {
         SingleVariableDeclaration messageParameter = this.createSingleVariableDeclaration("message",
                 this.createSimpleType("String"));
         SingleVariableDeclaration colleagueParameter = this.createSingleVariableDeclaration("colleague",
-                this.createSimpleType("Colleague"));
+                this.createSimpleType(this.colleagueInteface));
         sendMethod.parameters().add(messageParameter);
         sendMethod.parameters().add(colleagueParameter);
 
@@ -35,7 +35,7 @@ public class MediatorInterface extends CodeGenerator {
         // add class to CU
         this.compilationUnit.types().add(this.classDeclaration);
         // apply edits to the document
-        this.applyEdits();;
+        this.applyEdits();
 
         // return document
         return this.document;
