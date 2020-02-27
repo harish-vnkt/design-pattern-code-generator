@@ -26,7 +26,7 @@ public class AbstractFactoryBuilder implements CodeBuilder {
 
     public AbstractFactoryBuilder(String entryClass, String clientClass, String factoryClass,
                                   String factoryInterface, String productAClass, String productBClass) {
-        this.logger = LoggerFactory.getLogger("DesignPatternBuilders.AbstractFactory");
+        this.logger = LoggerFactory.getLogger("DesignPatternBuilders.AbstractFactoryBuilder");
         this.entryClass = entryClass;
         this.clientClass = clientClass;
         this.factoryClass = factoryClass;

@@ -7,16 +7,23 @@ import org.eclipse.jface.text.BadLocationException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.File;
 
+/**
+ * Builder for Factory design pattern
+ *
+ */
 public class FactoryBuilder implements CodeBuilder {
 
     String creatorClass, subCreatorClass, productInterface, productAClass;
     String directoryPath = "generated_patterns/Factory/";
+    private Logger logger;
 
     public FactoryBuilder(String creatorClass, String subCreatorClass,
                           String productInterface, String productAClass) {
+        this.logger = LoggerFactory.getLogger("DesignPatternBuilders.FactoryBuilder");
         this.creatorClass = creatorClass;
         this.subCreatorClass = subCreatorClass;
         this.productInterface = productInterface;
@@ -37,12 +44,16 @@ public class FactoryBuilder implements CodeBuilder {
         String subCreatorFilename = this.directoryPath + subCreatorObject.fileName + ".java";
         String productFilename = this.directoryPath + productObject.fileName + ".java";
         String productAFilename = this.directoryPath + productAObject.fileName + ".java";
+        logger.debug("Creating Creator file");
         FileUtils.writeStringToFile(new File(creatorFilename),
                 creatorObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating CreatorSubclass file");
         FileUtils.writeStringToFile(new File(subCreatorFilename),
                 subCreatorObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating Product file");
         FileUtils.writeStringToFile(new File(productFilename),
                 productObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating ProductA file");
         FileUtils.writeStringToFile(new File(productAFilename),
                 productAObject.buildCode().get(), StandardCharsets.UTF_8);
 

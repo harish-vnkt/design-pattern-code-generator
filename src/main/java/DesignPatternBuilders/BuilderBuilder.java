@@ -7,16 +7,23 @@ import org.eclipse.jface.text.BadLocationException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.File;
 
+/**
+ * Builder for Builder design pattern
+ *
+ */
 public class BuilderBuilder implements CodeBuilder {
 
     String directorClass, builderClass, complexObjectClass, productInterface, productAClass, productBClass;
     String directoryPath = "generated_patterns/Builder/";
+    private Logger logger;
 
     public BuilderBuilder(String directorClass, String builderClass, String complexObjectClass,
                                   String productInterface, String productAClass, String productBClass) {
+        this.logger = LoggerFactory.getLogger("DesignPatternBuilders.BuilderBuilder");
         this.directorClass = directorClass;
         this.builderClass = builderClass;
         this.complexObjectClass = complexObjectClass;
@@ -43,14 +50,20 @@ public class BuilderBuilder implements CodeBuilder {
         String productFilename = this.directoryPath + productObject.fileName + ".java";
         String productAFilename = this.directoryPath + productAObject.fileName + ".java";
         String productBFilename = this.directoryPath + productBObject.fileName + ".java";
+        logger.debug("Creating Director file");
         FileUtils.writeStringToFile(new File(directorFilename),
                 directorObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating Builder file");
         FileUtils.writeStringToFile(new File(builderFilename), builderObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating ComplexObject file");
         FileUtils.writeStringToFile(new File(complexObjectFilename),
                 complexObjectObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating Product file");
         FileUtils.writeStringToFile(new File(productFilename), productObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating ProductA file");
         FileUtils.writeStringToFile(new File(productAFilename),
                 productAObject.buildCode().get(), StandardCharsets.UTF_8);
+        logger.debug("Creating ProductB file");
         FileUtils.writeStringToFile(new File(productBFilename),
                 productBObject.buildCode().get(), StandardCharsets.UTF_8);
     }
