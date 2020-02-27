@@ -1,6 +1,9 @@
 # Java build artifacts class files
 *.class
 
+# generated log files
+*.log
+
 # generated files
 bin/
 gen/
@@ -15,7 +18,6 @@ generated_patterns/
 *.iml
 .idea
 .gradle
-
 
 # NDK
 obj/
