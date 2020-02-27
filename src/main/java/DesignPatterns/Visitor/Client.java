@@ -7,11 +7,13 @@ import org.eclipse.jface.text.Document;
 
 public class Client extends CodeGenerator {
 
-    String visitorClass, element1Class, element2Class;
+    String visitorClass, visitorConcreteClass, element1Class, element2Class;
 
-    public Client(String filename, String visitorClass, String element1Class, String element2Class) {
+    public Client(String filename, String visitorClass, String visitorConcreteClass,
+                  String element1Class, String element2Class) {
         super(filename);
         this.visitorClass = visitorClass;
+        this.visitorConcreteClass = visitorConcreteClass;
         this.element1Class = element1Class;
         this.element2Class = element2Class;
     }
@@ -52,7 +54,7 @@ public class Client extends CodeGenerator {
                 this.createSimpleType(this.visitorClass)
         );
         ClassInstanceCreation visitorInstance = this.createInstanceCreationExpression(
-                this.createSimpleType(this.visitorClass)
+                this.createSimpleType(this.visitorConcreteClass)
         );
         Assignment visitorAssignment = this.createAssignmentExpression(
                 visitorVariable,
