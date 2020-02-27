@@ -5,11 +5,11 @@ import org.eclipse.jdt.core.dom.*;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
 
-public class ElementConcreteClass extends CodeGenerator {
+public class ElementConcrete extends CodeGenerator {
 
     String visitorClass, elementClass;
 
-    public ElementConcreteClass(String filename, String visitorClass, String elementClass) {
+    public ElementConcrete(String filename, String visitorClass, String elementClass) {
         super(filename);
         this.visitorClass = visitorClass;
         this.elementClass = elementClass;
