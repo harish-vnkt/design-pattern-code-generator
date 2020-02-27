@@ -15,7 +15,7 @@ public class MediatorInterface extends CodeGenerator {
     }
 
     public Document buildCode() throws BadLocationException {
-        this.createTypeDeclaration(this.fileName, false, CodeGenerator.publicKeyword,
+        this.createTypeDeclaration(this.fileName, true, CodeGenerator.publicKeyword,
                 false, false, null, null);
 
         // send method
