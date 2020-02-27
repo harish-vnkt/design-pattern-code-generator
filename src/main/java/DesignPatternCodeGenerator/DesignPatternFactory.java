@@ -88,6 +88,18 @@ public class DesignPatternFactory {
             );
             mediatorBuilder.writeFile();
         }
+
+        else if (patternNumber == 7) {
+            VisitorBuilder visitorBuilder = new VisitorBuilder(
+                    this.configObject.getString("Visitor.clientClass"),
+                    this.configObject.getString("Visitor.visitorAbstractClass"),
+                    this.configObject.getString("Visitor.visitorConcreteClass"),
+                    this.configObject.getString("Visitor.elementAbstractClass"),
+                    this.configObject.getString("Visitor.element1Class"),
+                    this.configObject.getString("Visitor.element2Class")
+            );
+            visitorBuilder.writeFile();
+        }
         
     }
 
