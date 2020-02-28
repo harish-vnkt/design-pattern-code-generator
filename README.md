@@ -81,19 +81,6 @@ All the changes made to the abstract syntax tree and the compilation unit are ap
 ### Results
 
 The design patterns implemented here are - 
-* Abstract factory
-* Builder
-* Facade
-* Factory
-* Chain of Responsibility
-* Mediator
-* Visitor
-
-There are five unit tests and integration tests for all the implemented design patterns. The generated patterns are written to a folder named ```generated_patterns``` in the project directory under the appropriate folders.
-
-### Results
-
-The design patterns implemented here are - 
 
 * Abstract factory
 * Builder
