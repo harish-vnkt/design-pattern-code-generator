@@ -1,15 +1,20 @@
 package DesignPatternCodeGenerator;
 
-import org.junit.BeforeClass;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import org.eclipse.jdt.core.dom.*;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.Document;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Field;
-
+/**
+ * Mock class to test the functioning of methods of CodeGenerator
+ *
+ * @author Harish Venkataraman
+ */
 class CodeGeneratorMock extends CodeGenerator {
 
     public CodeGeneratorMock(String filename) {
@@ -62,16 +67,23 @@ class CodeGeneratorMock extends CodeGenerator {
 
 }
 
+/**
+ * Unit test cases for testing specific components of CodeGenerator
+ */
 public class CodeGeneratorTest {
 
     private CodeGeneratorMock mockCodeGenerator;
     private Document mockDocumentObject;
+
 
     public CodeGeneratorTest() throws BadLocationException {
         mockCodeGenerator = new CodeGeneratorMock("MockClassName");
         mockDocumentObject = mockCodeGenerator.buildCode();
     }
 
+    /**
+     * Tests createTypeDeclaration() method of CodeGenerator
+     */
     @Test
     public void shouldCreateCorrectClass() {
         TypeDeclaration retrievedType = mockCodeGenerator.classDeclaration;
@@ -81,6 +93,9 @@ public class CodeGeneratorTest {
         assertEquals("should be public", retrievedModifier, "public");
     }
 
+    /**
+     * Tests createMainMethod() method of CodeGenerator
+     */
     @Test
     public void shouldAddMainMethod() {
         MethodDeclaration retrievedMainMethodDeclaration =
@@ -93,6 +108,9 @@ public class CodeGeneratorTest {
         assertEquals("should be public", retrievedModifier, "public");
     }
 
+    /**
+     * Tests createFieldDeclaration() method of CodeGenerator
+     */
     @Test
     public void shouldAddField() {
         FieldDeclaration retrievedFieldDeclaration =
@@ -105,6 +123,9 @@ public class CodeGeneratorTest {
         assertEquals("should be private", retrievedModifier, "private");
     }
 
+    /**
+     * Tests createBlock() and createPrintStatement() method of CodeGenerator
+     */
     @Test
     public void shouldAddBlock() {
         MethodDeclaration operationMethodDeclaration =
@@ -116,6 +137,9 @@ public class CodeGeneratorTest {
         assertEquals("should be println", retrievedFunctionName, "println");
     }
 
+    /**
+     * Tests FieldAccess creation of CodeGenerator
+     */
     @Test
     public void shouldAddFieldAcess() {
         MethodDeclaration operationMethodDeclaration =
@@ -127,5 +151,10 @@ public class CodeGeneratorTest {
         assertEquals("should be classField", retrievedFieldName, "classField");
     }
 
+    @AfterClass
+    public static void displayLogMessage() {
+        Logger logger = LoggerFactory.getLogger("DesignPatternCodeGenerator.CodeGeneratorTest");
+        logger.debug("Finished testing");
+    }
 
 }
