@@ -15,7 +15,7 @@ To build without executing test cases - ```gradle clean build -x test```
 
 ### User inputs
 
-An ```application.conf``` file is provided in ```src/main/java/resources/``` which can be used to modify the input values for any design pattern. Running the project asks the user for the design pattern to be generated and then selectively reads ```application.conf``` file for the desired inputs based on the design pattern chosen. Default inputs are provided in the configuration file, so the project can run without any modifications, too.
+An ```application.conf``` file is provided in ```src/main/java/resources/``` which can be used to modify the input values for any design pattern. Running the project asks the user for the design pattern to be generated and then selectively reads ```application.conf``` file for the desired inputs based on the design pattern chosen. Default inputs are provided in the configuration file, so the project can run without any modifications, too. The logs are displayed on the console as well as stored in a file named ```logs.log```.
 
 ### System design
 
@@ -56,6 +56,7 @@ The implementation of the code generation for each of the design patterns are pr
 ### Results
 
 The design patterns implemented here are - 
+
 * Abstract factory
 * Builder
 * Facade
