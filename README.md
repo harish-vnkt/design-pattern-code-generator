@@ -13,7 +13,9 @@ To run the executable in the project - ```gradle run```
 
 To build without executing test cases - ```gradle clean build -x test```
 
-### User inputs
+To run the tests - ```gradle test```
+
+### User input instructions
 
 An ```application.conf``` file is provided in ```src/main/java/resources/``` which can be used to modify the input values for any design pattern. Running the project asks the user for the design pattern to be generated and then selectively reads ```application.conf``` file for the desired inputs based on the design pattern chosen. Default inputs are provided in the configuration file, so the project can run without any modifications, too. The logs are displayed on the console as well as stored in a file named ```logs.log```.
 
@@ -65,13 +67,13 @@ The design patterns implemented here are -
 * Mediator
 * Visitor
 
-There are five unit tests and integration tests for all the implemented design patterns. The generated patterns are written to a folder named ```generated_patterns``` in the project directory under the appropriate folders.
+There are five unit tests and integration tests for all the implemented design patterns. The generated patterns are written to a folder named ```generated_patterns``` in the project directory under the appropriate folders. The integration tests essentially build the entire code for a design pattern.
 
 ### Areas of improvement
 
 * **Coverage** - Could have implemented more design patterns if I had managed time better. I spent more time than necessary trying to design my abstraction instead of implementing design patterns.
 * **Design** - Since any code that needs to be generated needs to be added to the abstract syntax tree under construction, the ```CodeGenerator``` class was implemented as an abstract class to inherit rather than a utility class, which seems more reasonable to me. It makes more sense as a utility class because of the presence of methods in the class that generate pieces of code that I manually piece together later in the subclasses.
-* **Testing and Exceptions** - The testing on all the methods for manipulating the abstract syntax was not exhaustive. A lot of the parts of the tree are added to list objects and I have not done type-checking before adding them.
+* **Testing and Exceptions** - The testing on all the methods for manipulating the abstract syntax was not exhaustive. A lot of the parts of the tree are added to list objects and I have not done type-checking before adding them. I have also not done input checking when reading user inputs from configuration file.
 * **Scope for further abstraction** - I ended up repeating code generating procedures for multiple files that needed to be generated, for example, the steps to create a method block, or the steps to add formal parameters, or the steps create an assignment expression. This could have been avoided by more careful abstraction. I also repeated code for creating the Builder classes which could have been avoided in retrospect.
 * **Limited input freedom** - The design patterns have been chosen with a basic structure that is to be generated giving the user less number of inputs to manipulate. The code generation should ideally cover a broader scope.
 * **Logging** - Logging could have been better and more structured.
