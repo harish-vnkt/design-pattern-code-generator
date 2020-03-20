@@ -28,7 +28,7 @@ public class BuilderTest {
     public void shouldBuildAbstractFactory() throws IOException, BadLocationException {
         logger.debug("Testing Abstract Factory design pattern");
         AbstractFactoryBuilder abstractFactoryBuilder = new AbstractFactoryBuilder(
-                "Entry", "Client", "Factory",
+                "generated_patterns/AbstractFactory/", "Entry", "Client", "Factory",
                 "FactoryInterface", "ProductA", "ProductB"
         );
         abstractFactoryBuilder.writeFile();
@@ -42,7 +42,7 @@ public class BuilderTest {
     public void shouldBuildBuilder() throws IOException, BadLocationException {
         logger.debug("Testing Builder design pattern");
         BuilderBuilder builderBuilder = new BuilderBuilder(
-                "Director", "Builder", "ComplexObject",
+                "generated_patterns/Builder/","Director", "Builder", "ComplexObject",
                 "ProductInterface", "ProductA", "ProductB"
         );
         builderBuilder.writeFile();
@@ -56,7 +56,7 @@ public class BuilderTest {
     public void shouldBuildChainOfResponsibility() throws IOException, BadLocationException {
         logger.debug("Testing ChainOfResponsibility design pattern");
         ChainOfResponsibilityBuilder chainOfResponsibilityBuilder = new ChainOfResponsibilityBuilder(
-                "Sender", "Handler", "Receiver1",
+                "generated_patterns/ChainOfResponsibility/","Sender", "Handler", "Receiver1",
                 "Receiver2"
         );
         chainOfResponsibilityBuilder.writeFile();
@@ -70,7 +70,7 @@ public class BuilderTest {
     public void shouldBuildFacade() throws IOException, BadLocationException {
         logger.debug("Testing Facade design pattern");
         FacadeBuilder facadeBuilder = new FacadeBuilder(
-                "Facade", "Facade1", "Class1",
+                "generated_patterns/Facade/","Facade", "Facade1", "Class1",
                 "Class2", "Class3", "method1", "method2",
                 "method3"
         );
@@ -85,7 +85,7 @@ public class BuilderTest {
     public void shouldBuildFactory() throws IOException, BadLocationException {
         logger.debug("Testing Factory design pattern");
         FactoryBuilder factoryBuilder = new FactoryBuilder(
-                "Creator", "Creator1", "Product",
+                "generated_patterns/Factory/","Creator", "Creator1", "Product",
                 "ProductA"
         );
         factoryBuilder.writeFile();
@@ -99,7 +99,7 @@ public class BuilderTest {
     public void shouldBuildMediator() throws IOException, BadLocationException {
         logger.debug("Testing Mediator design pattern");
         MediatorBuilder mediatorBuilder = new MediatorBuilder(
-                "Mediator", "Mediator1", "Colleague",
+                "generated_patterns/Mediator/","Mediator", "Mediator1", "Colleague",
                 "Colleague1", "Colleague2"
         );
         mediatorBuilder.writeFile();
@@ -113,7 +113,7 @@ public class BuilderTest {
     public void shouldBuildVisitor() throws IOException, BadLocationException {
         logger.debug("Testing Visitor design pattern");
         VisitorBuilder visitorBuilder = new VisitorBuilder(
-                "Client", "Visitor", "Visitor1",
+                "generated_patterns/Visitor/","Client", "Visitor", "Visitor1",
                 "Element", "Element1", "Element2"
         );
         visitorBuilder.writeFile();
