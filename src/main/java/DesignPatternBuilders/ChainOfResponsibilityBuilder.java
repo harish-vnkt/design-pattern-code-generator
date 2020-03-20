@@ -18,12 +18,13 @@ import java.io.File;
 public class ChainOfResponsibilityBuilder implements CodeBuilder {
 
     String senderClass, handlerClass, receiver1, receiver2;
-    String directoryPath = "generated_patterns/ChainOfResponsibility/";
+    String directoryPath;
     private Logger logger;
 
-    public ChainOfResponsibilityBuilder(String senderClass, String handlerClass,
+    public ChainOfResponsibilityBuilder(String directoryPath, String senderClass, String handlerClass,
                                         String receiver1, String receiver2) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.ChainOfResponsibilityBuilder");
+        this.directoryPath = directoryPath;
         this.senderClass = senderClass;
         this.handlerClass = handlerClass;
         this.receiver1 = receiver1;

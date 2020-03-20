@@ -18,12 +18,13 @@ import java.io.File;
 public class VisitorBuilder implements CodeBuilder {
 
     String clientClass, visitorClass, visitorConcreteClass, elementClass, element1Class, element2Class;
-    String directoryPath = "generated_patterns/Visitor/";
+    String directoryPath;
     private Logger logger;
 
-    public VisitorBuilder(String clientClass, String visitorClass, String visitorConcreteClass,
+    public VisitorBuilder(String directoryPath, String clientClass, String visitorClass, String visitorConcreteClass,
                           String elementClass, String element1Class, String element2Class) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.Visitor");
+        this.directoryPath = directoryPath;
         this.clientClass = clientClass;
         this.visitorClass = visitorClass;
         this.visitorConcreteClass = visitorConcreteClass;

@@ -18,12 +18,13 @@ import java.io.File;
 public class BuilderBuilder implements CodeBuilder {
 
     String directorClass, builderClass, complexObjectClass, productInterface, productAClass, productBClass;
-    String directoryPath = "generated_patterns/Builder/";
+    String directoryPath;
     private Logger logger;
 
-    public BuilderBuilder(String directorClass, String builderClass, String complexObjectClass,
+    public BuilderBuilder(String directoryPath, String directorClass, String builderClass, String complexObjectClass,
                                   String productInterface, String productAClass, String productBClass) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.BuilderBuilder");
+        this.directoryPath = directoryPath;
         this.directorClass = directorClass;
         this.builderClass = builderClass;
         this.complexObjectClass = complexObjectClass;

@@ -18,12 +18,13 @@ import java.io.File;
 public class FactoryBuilder implements CodeBuilder {
 
     String creatorClass, subCreatorClass, productInterface, productAClass;
-    String directoryPath = "generated_patterns/Factory/";
+    String directoryPath;
     private Logger logger;
 
-    public FactoryBuilder(String creatorClass, String subCreatorClass,
+    public FactoryBuilder(String directoryPath, String creatorClass, String subCreatorClass,
                           String productInterface, String productAClass) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.FactoryBuilder");
+        this.directoryPath = directoryPath;
         this.creatorClass = creatorClass;
         this.subCreatorClass = subCreatorClass;
         this.productInterface = productInterface;

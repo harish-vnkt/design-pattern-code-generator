@@ -22,11 +22,12 @@ public class AbstractFactoryBuilder implements CodeBuilder {
     String entryClass, clientClass, factoryClass, factoryInterface, productAClass, productBClass;
     private Logger logger;
     // output directory
-    String directoryPath = "generated_patterns/AbstractFactory/";
+    String directoryPath;
 
-    public AbstractFactoryBuilder(String entryClass, String clientClass, String factoryClass,
+    public AbstractFactoryBuilder(String directoryPath, String entryClass, String clientClass, String factoryClass,
                                   String factoryInterface, String productAClass, String productBClass) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.AbstractFactoryBuilder");
+        this.directoryPath = directoryPath;
         this.entryClass = entryClass;
         this.clientClass = clientClass;
         this.factoryClass = factoryClass;

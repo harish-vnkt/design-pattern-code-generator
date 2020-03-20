@@ -21,12 +21,13 @@ import java.io.File;
 public class MediatorBuilder implements CodeBuilder {
 
     String mediatorInterface, mediatorClass, colleagueInterface, colleague1Class, colleague2Class;
-    String directoryPath = "generated_patterns/Mediator/";
+    String directoryPath;
     private Logger logger;
 
-    public MediatorBuilder(String mediatorInterface, String mediatorClass, String colleagueInterface,
+    public MediatorBuilder(String directoryPath, String mediatorInterface, String mediatorClass, String colleagueInterface,
                            String colleague1Class, String colleague2Class) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.Mediator");
+        this.directoryPath = directoryPath;
         this.mediatorInterface = mediatorInterface;
         this.mediatorClass = mediatorClass;
         this.colleagueInterface = colleagueInterface;

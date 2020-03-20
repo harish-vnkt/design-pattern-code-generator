@@ -18,12 +18,13 @@ import java.io.File;
 public class FacadeBuilder implements CodeBuilder {
 
     String facadeClass, facadeSubClass, class1, class2, class3, method1, method2, method3;
-    String directoryPath = "generated_patterns/Facade/";
+    String directoryPath;
     private Logger logger;
 
-    public FacadeBuilder(String facadeClass, String facadeSubClass, String class1, String class2, String class3,
+    public FacadeBuilder(String directoryPath, String facadeClass, String facadeSubClass, String class1, String class2, String class3,
                          String method1, String method2, String method3) {
         this.logger = LoggerFactory.getLogger("DesignPatternBuilders.FacadeBuilder");
+        this.directoryPath = directoryPath;
         this.facadeClass = facadeClass;
         this.facadeSubClass = facadeSubClass;
         this.class1 = class1;
