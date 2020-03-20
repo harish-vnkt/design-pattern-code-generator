@@ -29,7 +29,7 @@ For the code generation, I have used the Eclipse AST Parser to build the code. F
 
 ![alt text][uml]
 
-[uml]: readme_resources/uml.png
+[uml]: readme_resources/uml_hw1.png
 
 In my abstraction, the design patterns are realized through their component files. Each design pattern is made of a collection of classes and interfaces (top-level types) that make up the pattern. The following are the main components of the abstraction. 
 
