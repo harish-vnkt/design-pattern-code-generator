@@ -23,6 +23,7 @@ public class DesignPatternFactory {
     private Config configObject;
     // logger object
     private static Logger logger;
+    private static String directoryPath = "generated_patterns/AbstractFactory/";
 
     /**
      * Constructor used to set some of the fields
@@ -53,6 +54,7 @@ public class DesignPatternFactory {
         if (patternNumber == 1) {
             logger.debug("Building Abstract Factory design pattern");
             AbstractFactoryBuilder abstractFactoryBuilder = new AbstractFactoryBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("AbstractFactory.entryClass"),
                     this.configObject.getString("AbstractFactory.clientClass"),
                     this.configObject.getString("AbstractFactory.factoryClass"),
@@ -66,6 +68,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 2) {
             logger.debug("Building Builder design pattern");
             BuilderBuilder builderBuilder = new BuilderBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("Builder.directorClass"),
                     this.configObject.getString("Builder.builderClass"),
                     this.configObject.getString("Builder.complexObjectClass"),
@@ -79,6 +82,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 3) {
             logger.debug("Building Factory design pattern");
             FactoryBuilder factoryBuilder = new FactoryBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("Factory.creatorClass"),
                     this.configObject.getString("Factory.subCreatorClass"),
                     this.configObject.getString("Factory.productInterface"),
@@ -90,6 +94,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 4) {
             logger.debug("Building Facade design pattern");
             FacadeBuilder facadeBuilder = new FacadeBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("Facade.facadeClass"),
                     this.configObject.getString("Facade.facadeSubClass"),
                     this.configObject.getString("Facade.class1"),
@@ -105,6 +110,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 5) {
             logger.debug("Building Chain of Responsibility design pattern");
             ChainOfResponsibilityBuilder corBuilder = new ChainOfResponsibilityBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("ChainOfResponsibility.senderClass"),
                     this.configObject.getString("ChainOfResponsibility.handlerClass"),
                     this.configObject.getString("ChainOfResponsibility.receiver1Class"),
@@ -116,6 +122,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 6) {
             logger.debug("Building Mediator design pattern");
             MediatorBuilder mediatorBuilder = new MediatorBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("Mediator.mediatorInterface"),
                     this.configObject.getString("Mediator.mediatorClass"),
                     this.configObject.getString("Mediator.colleagueAbstractClass"),
@@ -128,6 +135,7 @@ public class DesignPatternFactory {
         else if (patternNumber == 7) {
             logger.debug("Building Visitor design pattern");
             VisitorBuilder visitorBuilder = new VisitorBuilder(
+                    DesignPatternFactory.directoryPath,
                     this.configObject.getString("Visitor.clientClass"),
                     this.configObject.getString("Visitor.visitorAbstractClass"),
                     this.configObject.getString("Visitor.visitorConcreteClass"),
